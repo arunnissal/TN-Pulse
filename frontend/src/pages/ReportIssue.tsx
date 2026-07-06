@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Camera, MapPin, AlertCircle, CheckCircle2, Loader2, Check } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import api from '../lib/axios';
+import api from '../api/axios';
 import { useNavigate } from 'react-router';
 import LiveCamera from '../components/LiveCamera';
 

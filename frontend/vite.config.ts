@@ -9,15 +9,6 @@ export default defineConfig({
     tailwindcss()
   ],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router'],
-          leaflet: ['leaflet', 'react-leaflet'],
-          lucide: ['lucide-react']
-        }
-      }
-    },
     chunkSizeWarningLimit: 1000
   }
 })
