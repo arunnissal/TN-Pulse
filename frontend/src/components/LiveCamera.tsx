@@ -19,9 +19,6 @@ export default function LiveCamera({ onCapture }: LiveCameraProps) {
       });
       setStream(mediaStream);
       setIsActive(true);
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-      }
     } catch (err) {
       console.error("Error accessing camera:", err);
       alert("Could not access camera. Please allow permissions.");
@@ -73,6 +70,13 @@ export default function LiveCamera({ onCapture }: LiveCameraProps) {
       }
     };
   }, [stream]);
+
+  // Assign stream to video element when it becomes active
+  useEffect(() => {
+    if (isActive && videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+    }
+  }, [isActive, stream]);
 
   if (photo) {
     return (
