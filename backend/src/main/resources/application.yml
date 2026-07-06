@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: tnpulse-api
+  
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/tnpulse}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  
+  security:
+    jwt:
+      secret: ${JWT_SECRET:8f2a4b3d7c9e1f5g8h2j4k6l9m1n3p5q7r9s2t4v6w8x1y3z5a7b9c2d4e6f8g0h2i4j6k8l0m2n4p6q8r0s2t4v6w8x0y2z4a6b8c0d2e4f6g8h0}
+      expiration-ms: 86400000 # 24 hours
+      refresh-expiration-ms: 604800000 # 7 days
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:demo}
+  api-key: ${CLOUDINARY_API_KEY:demo}
+  api-secret: ${CLOUDINARY_API_SECRET:demo}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.tnpulse.api: DEBUG
