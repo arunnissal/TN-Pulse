@@ -105,6 +105,7 @@ export default function LiveCamera({ onCapture }: LiveCameraProps) {
           ref={videoRef} 
           autoPlay 
           playsInline 
+          muted
           className="w-full h-full object-cover"
         />
         <canvas ref={canvasRef} className="hidden" />
