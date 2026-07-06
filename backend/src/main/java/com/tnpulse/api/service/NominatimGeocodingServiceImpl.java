@@ -46,6 +46,10 @@ public class NominatimGeocodingServiceImpl implements GeocodingService {
             log.error("Failed to reverse geocode: {}", e.getMessage());
         }
         
-        return Optional.empty();
+        // Fallback to a default location so the user is never blocked from reporting
+        return Optional.of(LocationDto.builder()
+                .district("Chennai")
+                .locality("Unknown Area")
+                .build());
     }
 }
